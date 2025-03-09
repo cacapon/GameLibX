@@ -6,7 +6,7 @@
 #    By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 12:57:47 by ttsubo            #+#    #+#              #
-#    Updated: 2025/03/09 13:52:06 by ttsubo           ###   ########.fr        #
+#    Updated: 2025/03/09 13:58:35 by ttsubo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,6 @@ OBJS = $(addprefix $(BLD_DIR), $(SRC:.c=.o))
 
 all: $(NAME)
 
-# ここでbld + libft + mlx = libglx.aを作る
 $(NAME): $(OBJS) $(LFT_DIR)libft.a $(MLX_DIR)libmlx_Linux.a
 	cd $(BLD_DIR) && ar x ../$(LFT_DIR)libft.a
 	cd $(BLD_DIR) && ar x ../$(MLX_DIR)libmlx_Linux.a
@@ -41,7 +40,7 @@ $(BLD_DIR)%.o: $(GLX_DIR)%.c
 	$(CC) $(W_FLG) -c $< -o $@ $(I_FLG)
 
 $(LFT_DIR)libft.a: $(LFT_DIR)libft.h
-	$(MAKE) -C $(LFT_DIR) bonus
+	$(MAKE) -C $(LFT_DIR)
 
 $(MLX_DIR)libmlx_Linux.a: $(MLX_DIR)mlx.h
 	$(MAKE) -C $(MLX_DIR)
