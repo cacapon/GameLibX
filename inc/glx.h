@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#ifndef GLX_H
+# define GLX_H
 
 # define MAX_IMG_COUNT 64
 

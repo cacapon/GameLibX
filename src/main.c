@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "glx.h"
 
 t_glx	*glx_init(char *title, int win_x, int win_y)
 {
@@ -40,7 +40,15 @@ void	glx_load_img(t_glx *self, char *img_path)
 
 void	glx_free(t_glx *self)
 {
-	free(self->mlx);
+	int (*const d_win)(void*, void*) = mlx_destroy_window;
+	int (*const d_img)(void*, void*) = mlx_destroy_image;
+	int (*const d_display)(void*) = mlx_destroy_display;
+
+	d_win(self->mlx, self->win);
+	while(self->img->count >= 0)
+		d_img(self->mlx, self->img->img[self->img->count--]);
+	free(self->img->img);
+	d_display(self->mlx);
 	free(self);
 }
 
