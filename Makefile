@@ -31,7 +31,7 @@ OBJS = $(addprefix $(BLD_DIR), $(SRC:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LFT_DIR)libft.a $(MLX_DIR)libmlx_Linux.a
+$(NAME): $(LFT_DIR)libft.a $(MLX_DIR)libmlx_Linux.a $(OBJS)
 	cd $(BLD_DIR) && ar x ../$(LFT_DIR)libft.a
 	cd $(BLD_DIR) && ar x ../$(MLX_DIR)libmlx_Linux.a
 	ar rcs $(NAME) $(BLD_DIR)*.o
