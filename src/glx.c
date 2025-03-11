@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   glx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/09 11:47:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/09 13:55:45 by ttsubo           ###   ########.fr       */
+/*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
+/*   Updated: 2025/03/11 12:27:19 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "glx.h"
 
-# include "libft.h"
-# include "mlx.h"
-
-typedef struct s_glx	t_glx;
-
-typedef struct s_glx
+t_glx	*glx_init(void)
 {
-	void				*mlx;
-	void				(*free)(t_glx *self);
-}						t_glx;
+	t_glx	*glx;
 
-t_glx					*glx_init(void);
-void					glx_free(t_glx *self);
+	glx = ft_calloc(1, sizeof(t_glx));
+	glx->mlx = mlx_init();
+	glx->free = glx_free;
+	return (glx);
+}
 
-#endif
+void	glx_free(t_glx *self)
+{
+	free(self->mlx);
+	free(self);
+}
