@@ -6,7 +6,7 @@
 #    By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 12:57:47 by ttsubo            #+#    #+#              #
-#    Updated: 2025/03/09 13:58:35 by ttsubo           ###   ########.fr        #
+#    Updated: 2025/03/11 12:33:00 by ttsubo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ BLD_DIR = bld/
 LFT_DIR = lib/libft/
 MLX_DIR = lib/mlx/
 
-SRC = main.c
+SRC = glx.c
 
 SRCS = $(addprefix $(GLX_DIR), $(SRC))
 OBJS = $(addprefix $(BLD_DIR), $(SRC:.c=.o))

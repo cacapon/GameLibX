@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   glx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/09 11:47:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/09 13:55:45 by ttsubo           ###   ########.fr       */
+/*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
+/*   Updated: 2025/03/11 12:36:42 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "glx.h"
 
-# include "libft.h"
-# include "mlx.h"
-
-typedef struct s_glx	t_glx;
-
-typedef struct s_glx
+t_glx	*glx_init(char *title, int win_w, int win_h)
 {
-	void				*mlx;
-	void				(*free)(t_glx *self);
-}						t_glx;
+	t_glx	*glx;
 
-t_glx					*glx_init(void);
-void					glx_free(t_glx *self);
+	glx = ft_calloc(1, sizeof(t_glx));
+	glx->mlx = mlx_init();
+	glx->win = mlx_new_window(glx->mlx, win_w, win_h, title);
+	glx->run = glx_run;
+	glx->free = glx_free;
+	return (glx);
+}
 
-#endif
+void	glx_free(t_glx *self)
+{
+	free(self->mlx);
+	free(self);
+}
+
+void	glx_run(t_glx *self)
+{
+	mlx_loop(self->mlx);
+}
