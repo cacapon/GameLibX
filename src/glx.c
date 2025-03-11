@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/11 16:15:32 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/11 16:21:29 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,11 @@ void	glx_free(t_glx *self)
 	free(self);
 }
 
-void	glx_run(t_glx *self)
+void	glx_run(t_glx *self, int(*update)(t_glx), int(*draw)(t_glx))
 {
 	mlx_loop_hook(self->mlx, _glx_update_key_state, self);
+	mlx_loop_hook(self->mlx, update, self);
+	mlx_loop_hook(self->mlx, draw, self);
 	mlx_hook(self->win, 2, 1L << 0, _glx_key_pressed, self);
 	mlx_hook(self->win, 3, 1L << 1, _glx_key_released, self);
 	mlx_loop(self->mlx);
