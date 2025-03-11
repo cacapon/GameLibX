@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/11 12:36:42 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/11 12:52:28 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,14 @@ t_glx	*glx_init(char *title, int win_w, int win_h)
 	glx->mlx = mlx_init();
 	glx->win = mlx_new_window(glx->mlx, win_w, win_h, title);
 	glx->run = glx_run;
+	glx->load_img = glx_load_img;
 	glx->free = glx_free;
 	return (glx);
+}
+
+void	glx_load_img(t_glx *self, char *path, int w, int h)
+{
+	mlx_xpm_file_to_image(self->mlx, path, &w, &h);
 }
 
 void	glx_free(t_glx *self)
