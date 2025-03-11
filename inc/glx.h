@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:47:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/11 14:13:01 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/11 14:26:32 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "mlx.h"
 
 # define MAX_IMG 32
-# define KEY_MAX XK_ydiaeresis
+# define KEY_MAX XK_Delete
 
 typedef struct s_glx
 {
