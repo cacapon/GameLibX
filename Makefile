@@ -6,7 +6,7 @@
 #    By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 12:57:47 by ttsubo            #+#    #+#              #
-#    Updated: 2025/03/11 12:33:00 by ttsubo           ###   ########.fr        #
+#    Updated: 2025/03/12 13:06:26 by ttsubo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,13 @@ SRC = glx.c
 SRCS = $(addprefix $(GLX_DIR), $(SRC))
 OBJS = $(addprefix $(BLD_DIR), $(SRC:.c=.o))
 
+ifeq ($(MAKECMDGOALS), debug)
+CC := cc -g
+DEBUG = debug
+endif
+
 all: $(NAME)
+debug: $(NAME)
 
 $(NAME): $(LFT_DIR)libft.a $(MLX_DIR)libmlx_Linux.a $(OBJS)
 	cd $(BLD_DIR) && ar x ../$(LFT_DIR)libft.a
@@ -40,7 +46,7 @@ $(BLD_DIR)%.o: $(GLX_DIR)%.c
 	$(CC) $(W_FLG) -c $< -o $@ $(I_FLG)
 
 $(LFT_DIR)libft.a: $(LFT_DIR)libft.h
-	$(MAKE) -C $(LFT_DIR)
+	$(MAKE) -C $(LFT_DIR) $(DEBUG)
 
 $(MLX_DIR)libmlx_Linux.a: $(MLX_DIR)mlx.h
 	$(MAKE) -C $(MLX_DIR)
@@ -62,4 +68,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re debug
