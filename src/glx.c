@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/14 15:51:57 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/14 17:53:23 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_glx	*glx_init(char *title, int win_w, int win_h)
 	t_glx	*glx;
 
 	glx = ft_calloc(1, sizeof(t_glx));
+	glx->frame_count = 0;
 	glx->mlx = mlx_init();
 	glx->win = mlx_new_window(glx->mlx, win_w, win_h, title);
 	glx->imgc = 0;
@@ -97,8 +98,12 @@ void	glx_quit(t_glx *self, int sts_code)
 
 int	loop_function(t_glx *self)
 {
-	self->update(self);
-	self->draw(self);
+	self->frame_count = (self->frame_count + 1) % SIZE_MAX;
+	if (self->frame_count % UPDATE_COUNT == 0)
+	{
+		self->update(self);
+		self->draw(self);
+	}
 	return (0);
 }
 
