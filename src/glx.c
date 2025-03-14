@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/14 15:25:44 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/14 15:51:57 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_glx	*glx_init(char *title, int win_w, int win_h)
 	glx->run = glx_run;
 	glx->load_img = glx_load_img;
 	glx->put_img = glx_put_img;
-	glx->free = glx_free;
+	glx->quit = glx_quit;
 	glx->btnp = glx_btnp;
 	glx_key_state_init(glx);
 	return (glx);
@@ -81,10 +81,18 @@ void	glx_put_img(t_glx *self, int img_i, int w, int h)
 	mlx_put_image_to_window(self->mlx, self->win, self->imgs[img_i], w, h);
 }
 
-void	glx_free(t_glx *self)
+void	glx_quit(t_glx *self, int sts_code)
 {
-	free(self->mlx);
+	mlx_do_key_autorepeaton(self->mlx);
+	while (self->imgc)
+	{
+		self->imgc--;
+		mlx_destroy_image(self->mlx, self->imgs[self->imgc]);
+	}
+	mlx_destroy_window(self->mlx, self->win);
+	mlx_destroy_display(self->mlx);
 	free(self);
+	exit (sts_code);
 }
 
 int	loop_function(t_glx *self)
