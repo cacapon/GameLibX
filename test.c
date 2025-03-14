@@ -2,7 +2,7 @@
 
 int	draw(t_glx *self)
 {
-	mlx_clear_window(self->mlx, self->win);
+	//mlx_clear_window(self->mlx, self->win);
 	self->put_img(self, 0, 16, 16);
 	return (0);
 }
@@ -10,11 +10,9 @@ int	draw(t_glx *self)
 int	update(t_glx *self)
 {
 	if (self->btnp(self, XK_q))
-	{
-		ft_printf("push q \t prev:%d now:%d \n", self->prev_key_state[XK_q], self->current_key_state[XK_q]);
-		if (self->prev_key_state[XK_q])
-			exit(0);
-	}
+		exit(0);
+	if (self->btnp(self, XK_a))
+		ft_printf("put a\n");
 	return (0);
 }
 
