@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 18:39:09 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/16 19:12:37 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/16 20:04:25 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@
 # include <stdint.h>
 
 typedef enum {
-    COLOR_BLACK = 0,
-    COLOR_INDIGO,
-    COLOR_VIOLET,
-    COLOR_TEAL,
-    COLOR_MAROON,
-    COLOR_COBALT_BLUE,
-    COLOR_SKY_BLUE,
-    COLOR_WHITE,
-    COLOR_CRIMSON,
-    COLOR_BRONZE,
-    COLOR_SAFFRON,
-    COLOR_MINT_GREEN,
-    COLOR_CORN_FLOWER_BLUE,
-    COLOR_GRAY,
-    COLOR_SALMON_PINK,
-    COLOR_PEACH
+    GLX_COLOR_BLACK = 0,
+    GLX_COLOR_INDIGO,
+    GLX_COLOR_VIOLET,
+    GLX_COLOR_TEAL,
+    GLX_COLOR_MAROON,
+    GLX_COLOR_COBALT_BLUE,
+    GLX_COLOR_SKY_BLUE,
+    GLX_COLOR_WHITE,
+    GLX_COLOR_CRIMSON,
+    GLX_COLOR_BRONZE,
+    GLX_COLOR_SAFFRON,
+    GLX_COLOR_MINT_GREEN,
+    GLX_COLOR_CORN_FLOWER_BLUE,
+    GLX_COLOR_GRAY,
+    GLX_COLOR_SALMON_PINK,
+    GLX_COLOR_PEACH
 } t_glx_color_index; 
 
 # define GLX_COLOR_0 0x000000
