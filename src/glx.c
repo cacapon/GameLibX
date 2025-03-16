@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/16 20:10:04 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 07:22:47 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	glx_key_state_init(t_glx *self)
 		i++;
 	}
 }
+
 t_glx	*glx_init(char *title, int win_w, int win_h)
 {
 	t_glx	*glx;
@@ -37,6 +38,7 @@ t_glx	*glx_init(char *title, int win_w, int win_h)
 	glx->run = glx_run;
 	glx->load_img = glx_load_img;
 	glx->put_img = glx_put_img;
+	glx->put_str = glx_put_str;
 	glx->quit = glx_quit;
 	glx->btnp = glx_btnp;
 	glx->_error = _glx_error;
@@ -88,9 +90,15 @@ void	glx_load_img(t_glx *self, char *path, int w, int h)
 	self->imgc++;
 }
 
-void	glx_put_img(t_glx *self, int img_i, int w, int h)
+void	glx_put_img(t_glx *self, int img_i, int x, int y)
 {
-	mlx_put_image_to_window(self->mlx, self->win, self->imgs[img_i], w, h);
+	mlx_put_image_to_window(self->mlx, self->win, self->imgs[img_i], x, y);
+}
+
+// TODO: 引数が多すぎるのでx,yをvectorにまとめる
+void	glx_put_str(t_glx *self, char *str, int x, int y, t_glx_color_index color)
+{
+	mlx_string_put(self->mlx, self->win, x, y, glx_get_color(color), str);
 }
 
 void	glx_quit(t_glx *self, int sts_code)
