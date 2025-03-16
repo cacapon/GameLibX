@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:47:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/16 20:02:04 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/16 20:12:30 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_glx	t_glx;
 
 typedef struct s_glx
 {
+	size_t				_update_count;
 	size_t				frame_count;
 	void				*mlx;
 	void				*win;

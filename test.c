@@ -2,7 +2,8 @@
 
 int	draw(t_glx *self)
 {
-    mlx_string_put(self->mlx, self->win, 16, 16, glx_get_color(self->frame_count % 16), "hello glx!");
+	mlx_string_put(self->mlx, self->win, 16, 16, glx_get_color(self->frame_count
+				% 16), "hello glx!");
 	if (self->btnp(self, XK_a))
 		self->put_img(self, 0, 0, 0);
 	return (0);
