@@ -38,8 +38,15 @@ t_glx	*glx_init(char *title, int win_w, int win_h)
 	glx->put_img = glx_put_img;
 	glx->quit = glx_quit;
 	glx->btnp = glx_btnp;
+	glx->_error = _glx_error;
 	glx_key_state_init(glx);
 	return (glx);
+}
+
+void	_glx_error(t_glx *self, char *mes)
+{
+	ft_putstr_fd(mes, STDERR_FILENO);
+	self->quit(self, EXIT_FAILURE);
 }
 
 int	_glx_key_pressed(int keycode, t_glx *glx)
@@ -74,7 +81,10 @@ bool glx_btnp(t_glx *self, int keycode)
 
 void	glx_load_img(t_glx *self, char *path, int w, int h)
 {
-	self->imgs[self->imgc++] = mlx_xpm_file_to_image(self->mlx, path, &w, &h);
+	self->imgs[self->imgc] = mlx_xpm_file_to_image(self->mlx, path, &w, &h);
+	if (!self->imgs[self->imgc])
+		self->_error(self, "glx_load_img: Failed to load image.");
+	self->imgc++;
 }
 
 void	glx_put_img(t_glx *self, int img_i, int w, int h)

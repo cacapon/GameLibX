@@ -40,7 +40,11 @@ typedef struct s_glx
 	void				(*run)(t_glx *, int (*)(t_glx *), int (*)(t_glx *));
 	void				(*quit)(t_glx *, int);
 	bool				(*btnp)(t_glx *, int);
+
+	void				(*_error)(t_glx *, char *);
 }						t_glx;
+
+void					_glx_error(t_glx *self, char *mes);
 
 t_glx					*glx_init(char *title, int win_w, int win_h);
 void					glx_load_img(t_glx *self, char *path, int w, int h);
