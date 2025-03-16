@@ -6,15 +6,17 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:47:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/14 17:54:32 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/16 20:02:04 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GLX_H
 # define GLX_H
 
+# include "glx_color.h"
 # include "libft.h"
 # include "mlx.h"
+
 # include <X11/keysym.h>
 # include <stdbool.h>
 
