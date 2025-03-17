@@ -6,7 +6,7 @@
 #    By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 12:57:47 by ttsubo            #+#    #+#              #
-#    Updated: 2025/03/17 13:53:13 by ttsubo           ###   ########.fr        #
+#    Updated: 2025/03/17 14:08:50 by ttsubo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ BLD_DIR = bld/
 LFT_DIR = lib/libft/
 MLX_DIR = lib/mlx/
 
-PRI_SRC = glx_key_input_pri.c glx_prv.c
+PRI_SRC = glx_key_input_prv.c glx_prv.c
 PUB_SRC = glx.c glx_color.c glx_img.c glx_key_input.c glx_str.c
 
 SRCS = $(addprefix $(GLX_PRI_DIR), $(PRI_SRC)) \
