@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:47:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 07:19:49 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 11:36:26 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define MAX_IMG 32
 # define KEY_MAX XK_Delete
-# define UPDATE_COUNT 500
+# define UPDATE_COUNT 50000
 
 typedef struct s_glx	t_glx;
 
