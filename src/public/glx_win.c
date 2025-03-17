@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glx_str.h                                          :+:      :+:    :+:   */
+/*   glx_win.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 11:49:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 14:16:36 by ttsubo           ###   ########.fr       */
+/*   Created: 2025/03/17 14:13:57 by ttsubo            #+#    #+#             */
+/*   Updated: 2025/03/17 14:19:12 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GLX_STR_H
-# define GLX_STR_H
+#include "glx_win.h"
 
-# include "glx.h"
-# include "glx_define.h"
-# include "glx_struct.h"
-
-void	glx_put_str(t_glx *self, char *str, t_pos pos, t_glx_color_i color);
-
-#endif
+/**
+ * @brief
+ *
+ * @param self
+ */
+void	glx_cls(t_glx *self)
+{
+	mlx_clear_window(self->mlx, self->win);
+}
