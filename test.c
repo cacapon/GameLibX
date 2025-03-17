@@ -9,10 +9,9 @@ int	draw(t_glx *self)
     mlx_clear_window(self->mlx, self->win);    
     sprintf(flm_c, "%zu", self->frame_count);
     sprintf(up_c, "%zu", self->_update_count);
-	mlx_string_put(self->mlx, self->win, 16, 16, glx_get_color(self->frame_count
-				% 16), "hello glx!");
-	mlx_string_put(self->mlx, self->win, 16, 32, glx_get_color(GLX_COLOR_WHITE), flm_c);
-	mlx_string_put(self->mlx, self->win, 16, 48, glx_get_color(GLX_COLOR_WHITE), up_c);
+    self->put_str(self, "hello glx!", 16, 16, self->frame_count % 16);
+	self->put_str(self, flm_c, 16, 32, GLX_COLOR_WHITE);
+	self->put_str(self, up_c, 16, 48, GLX_COLOR_WHITE);
     if (self->btnp(self, XK_a))
 		self->put_img(self, 0, 0, 0);
 	return (0);
