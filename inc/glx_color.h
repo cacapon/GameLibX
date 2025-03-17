@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 18:39:09 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/16 20:04:25 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 12:32:12 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,25 @@
 
 # include <stdint.h>
 
-typedef enum {
-    GLX_COLOR_BLACK = 0,
-    GLX_COLOR_INDIGO,
-    GLX_COLOR_VIOLET,
-    GLX_COLOR_TEAL,
-    GLX_COLOR_MAROON,
-    GLX_COLOR_COBALT_BLUE,
-    GLX_COLOR_SKY_BLUE,
-    GLX_COLOR_WHITE,
-    GLX_COLOR_CRIMSON,
-    GLX_COLOR_BRONZE,
-    GLX_COLOR_SAFFRON,
-    GLX_COLOR_MINT_GREEN,
-    GLX_COLOR_CORN_FLOWER_BLUE,
-    GLX_COLOR_GRAY,
-    GLX_COLOR_SALMON_PINK,
-    GLX_COLOR_PEACH
-} t_glx_color_index; 
+typedef enum e_glx_color_index
+{
+	GLX_COLOR_BLACK = 0,
+	GLX_COLOR_INDIGO,
+	GLX_COLOR_VIOLET,
+	GLX_COLOR_TEAL,
+	GLX_COLOR_MAROON,
+	GLX_COLOR_COBALT_BLUE,
+	GLX_COLOR_SKY_BLUE,
+	GLX_COLOR_WHITE,
+	GLX_COLOR_CRIMSON,
+	GLX_COLOR_BRONZE,
+	GLX_COLOR_SAFFRON,
+	GLX_COLOR_MINT_GREEN,
+	GLX_COLOR_CORN_FLOWER_BLUE,
+	GLX_COLOR_GRAY,
+	GLX_COLOR_SALMON_PINK,
+	GLX_COLOR_PEACH
+}			t_glx_color_index;
 
 # define GLX_COLOR_0 0x000000
 # define GLX_COLOR_1 0x2B335F
@@ -51,6 +52,6 @@ typedef enum {
 # define GLX_COLOR_E 0xFF9798
 # define GLX_COLOR_F 0xEDC7B0
 
-uint32_t glx_get_color(t_glx_color_index color);
+uint32_t	glx_get_color(t_glx_color_index color);
 
 #endif

@@ -6,13 +6,11 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 12:12:05 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 12:12:57 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "glx.h"
-
-
 
 t_glx	*glx_init(char *title, int win_w, int win_h)
 {
@@ -42,11 +40,10 @@ void	_glx_error(t_glx *self, char *mes)
 	self->quit(self, EXIT_FAILURE);
 }
 
-
-
 void	glx_put_str(t_glx *self, char *str, t_pos pos, t_glx_color_index color)
 {
-	mlx_string_put(self->mlx, self->win, pos.x, pos.y, glx_get_color(color), str);
+	mlx_string_put(self->mlx, self->win, pos.x, pos.y, glx_get_color(color),
+		str);
 }
 
 void	glx_quit(t_glx *self, int sts_code)
@@ -60,7 +57,7 @@ void	glx_quit(t_glx *self, int sts_code)
 	mlx_destroy_window(self->mlx, self->win);
 	mlx_destroy_display(self->mlx);
 	free(self);
-	exit (sts_code);
+	exit(sts_code);
 }
 
 int	loop_function(t_glx *self)
@@ -76,7 +73,7 @@ int	loop_function(t_glx *self)
 	return (0);
 }
 
-void	glx_run(t_glx *self, int(*update)(t_glx*), int(*draw)(t_glx*))
+void	glx_run(t_glx *self, int (*update)(t_glx *), int (*draw)(t_glx *))
 {
 	mlx_do_key_autorepeatoff(self->mlx);
 	self->update = update;

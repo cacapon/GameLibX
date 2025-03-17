@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:14:01 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/16 19:55:42 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 12:30:53 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ uint32_t	glx_get_color(t_glx_color_index color)
 
 	if (color < 0 || color > 15)
 		return (GLX_COLOR_0);
-	
 	return (glx_colors[color]);
 }

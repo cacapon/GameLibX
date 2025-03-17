@@ -6,11 +6,11 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 11:48:46 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 11:50:07 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 12:29:00 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "glx_img.h"
+#include "glx_img.h"
 
 void	glx_load_img(t_glx *self, char *path, int w, int h)
 {
@@ -22,5 +22,8 @@ void	glx_load_img(t_glx *self, char *path, int w, int h)
 
 void	glx_put_img(t_glx *self, int img_i, t_pos pos)
 {
-	mlx_put_image_to_window(self->mlx, self->win, self->imgs[img_i], pos.x, pos.y);
+	static int	(*put_img)(void *, void *, void *, int,
+			int) = mlx_put_image_to_window;
+
+	put_img(self->mlx, self->win, self->imgs[img_i], pos.x, pos.y);
 }
