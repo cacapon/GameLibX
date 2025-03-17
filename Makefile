@@ -6,7 +6,7 @@
 #    By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 12:57:47 by ttsubo            #+#    #+#              #
-#    Updated: 2025/03/16 19:57:34 by ttsubo           ###   ########.fr        #
+#    Updated: 2025/03/17 14:08:50 by ttsubo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,16 +18,24 @@ W_FLG	= -Wall -Wextra -Werror
 I_FLG	= -Iinc -Ilib/mlx -Ilib/libft
 L_FLG	= -Llib/mlx -lmlx -lX11 -lXext 
 
-GLX_DIR = src/
+GLX_PRI_DIR = src/private/
+GLX_PUB_DIR = src/public/
 BLD_DIR = bld/
 
 LFT_DIR = lib/libft/
 MLX_DIR = lib/mlx/
 
-SRC = glx.c glx_color.c
+PRI_SRC = glx_key_input_prv.c glx_prv.c
+PUB_SRC = glx.c glx_color.c glx_img.c glx_key_input.c glx_str.c
 
-SRCS = $(addprefix $(GLX_DIR), $(SRC))
-OBJS = $(addprefix $(BLD_DIR), $(SRC:.c=.o))
+SRCS = $(addprefix $(GLX_PRI_DIR), $(PRI_SRC)) \
+	   $(addprefix $(GLX_PUB_DIR), $(PUB_SRC))
+
+OBJS = $(addprefix $(BLD_DIR), $(PRI_SRC:.c=.o)) \
+	   $(addprefix $(BLD_DIR), $(PUB_SRC:.c=.o))
+
+$(info $(SRCS))
+$(info $(OBJS))
 
 ifeq ($(MAKECMDGOALS), debug)
 CC := cc -g
@@ -42,7 +50,10 @@ $(NAME): $(LFT_DIR)libft.a $(MLX_DIR)libmlx_Linux.a $(OBJS)
 	cd $(BLD_DIR) && ar x ../$(MLX_DIR)libmlx_Linux.a
 	ar rcs $(NAME) $(BLD_DIR)*.o
 
-$(BLD_DIR)%.o: $(GLX_DIR)%.c
+$(BLD_DIR)%.o: $(GLX_PRI_DIR)%.c
+	$(CC) $(W_FLG) -c $< -o $@ $(I_FLG)
+
+$(BLD_DIR)%.o: $(GLX_PUB_DIR)%.c
 	$(CC) $(W_FLG) -c $< -o $@ $(I_FLG)
 
 $(LFT_DIR)libft.a: $(LFT_DIR)libft.h

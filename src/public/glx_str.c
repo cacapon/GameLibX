@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glx_color.h                                        :+:      :+:    :+:   */
+/*   glx_str.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 18:39:09 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 12:40:30 by ttsubo           ###   ########.fr       */
+/*   Created: 2025/03/17 11:48:46 by ttsubo            #+#    #+#             */
+/*   Updated: 2025/03/17 14:11:20 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GLX_COLOR_H
-# define GLX_COLOR_H
+#include "glx_str.h"
 
-# include "glx_define.h"
-# include <stdint.h>
+/**
+ * @brief 文字列strを位置posにcolorの色で出力します。
+ *
+ * @param self
+ * @param str
+ * @param pos
+ * @param color
+ */
+void	glx_put_str(t_glx *self, char *str, t_pos pos, t_glx_color_i color)
+{
+	void	*mlx;
+	void	*win;
 
-uint32_t	glx_get_color(t_glx_color_i color);
-
-#endif
+	mlx = self->mlx;
+	win = self->win;
+	mlx_string_put(mlx, win, pos.x, pos.y, glx_get_color(color), str);
+}
