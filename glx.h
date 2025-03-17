@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:47:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 14:29:12 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 16:32:12 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 # define GLX_H
 
 // custom includes
-# include "glx_color.h"
-# include "glx_define.h"
-# include "glx_img.h"
-# include "glx_private.h"
-# include "glx_str.h"
-# include "glx_struct.h"
-# include "glx_win.h"
+# include "inc/glx_color.h"
+# include "inc/glx_define.h"
+# include "inc/glx_img.h"
+# include "inc/glx_private.h"
+# include "inc/glx_str.h"
+# include "inc/glx_struct.h"
+# include "inc/glx_win.h"
 
 // submodule
-# include "libft.h"
-# include "mlx.h"
+# include "lib/libft/libft.h"
+# include "lib/mlx/mlx.h"
 
 // standard library
 # include <X11/keysym.h>
