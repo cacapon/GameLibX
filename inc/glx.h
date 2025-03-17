@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:47:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 12:41:01 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 12:51:34 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,5 @@ void		glx_put_img(t_glx *self, int img_i, t_pos pos);
 void		glx_put_str(t_glx *self, char *str, t_pos pos, t_glx_color_i color);
 void		glx_run(t_glx *self, int (*update)(t_glx *), int (*draw)(t_glx *));
 void		glx_quit(t_glx *self, int sts_code);
-bool		glx_btnp(t_glx *self, int keycode);
+int			glx_btnp(t_glx *self, int keycode);
 #endif
