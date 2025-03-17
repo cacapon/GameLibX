@@ -28,7 +28,7 @@ int	main(void)
 {
 	t_glx *glx;
 
-	glx = glx_init("test", 500, 500);
+	glx = glx_init("test", 500, 500, 50000);
 	glx->load_img(glx, "./plane.xpm", 16, 16);
 	glx->run(glx, update, draw);
 }

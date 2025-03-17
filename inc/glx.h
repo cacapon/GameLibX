@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:47:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 14:16:44 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 14:29:12 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@
 void	glx_error(t_glx *self, char *mes);
 
 // public
-t_glx	*glx_init(char *title, int win_w, int win_h);
+
+t_glx	*glx_init(char *title, int win_w, int win_h, size_t update_lim);
 void	glx_run(t_glx *self, int (*update)(t_glx *), int (*draw)(t_glx *));
 void	glx_quit(t_glx *self, int sts_code);
 int		glx_btnp(t_glx *self, int keycode);

@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 12:39:03 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 13:49:06 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 14:28:51 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 # define MAX_IMG 32
 # define KEY_MAX 0xFFFF
-# define UPDATE_COUNT 50000
 
 /**
  * @brief 使用可能な色のインデックス
