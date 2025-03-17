@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 13:41:06 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 13:43:09 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,6 @@ t_glx	*glx_init(char *title, int win_w, int win_h)
 	_glx_key_state_init(glx);
 	_glx_key_just_state_init(glx);
 	return (glx);
-}
-
-void	glx_put_str(t_glx *self, char *str, t_pos pos, t_glx_color_i color)
-{
-	mlx_string_put(self->mlx, self->win, pos.x, pos.y, glx_get_color(color),
-		str);
 }
 
 void	glx_quit(t_glx *self, int sts_code)
