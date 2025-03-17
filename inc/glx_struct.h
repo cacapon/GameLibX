@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 12:09:55 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 13:56:44 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 14:20:03 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_glx
 	void				(*put_str)(t_glx *, char *, t_pos, t_glx_color_i);
 	void				(*run)(t_glx *, int (*)(t_glx *), int (*)(t_glx *));
 	void				(*quit)(t_glx *, int);
+	void				(*cls)(t_glx *);
 }						t_glx;
 
 #endif

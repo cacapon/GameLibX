@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 14:00:06 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 14:20:54 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_glx	*glx_init(char *title, int win_w, int win_h)
 	glx->put_str = glx_put_str;
 	glx->quit = glx_quit;
 	glx->btnp = glx_btnp;
+	glx->cls = glx_cls;
 	_glx_key_state_init(glx);
 	_glx_key_just_state_init(glx);
 	return (glx);

@@ -6,7 +6,7 @@ int	draw(t_glx *self)
 	char	flm_c[20];
 	char	up_c[20];
 
-	mlx_clear_window(self->mlx, self->win);
+	self->cls(self);
 	sprintf(flm_c, "%zu", self->frame_count);
 	sprintf(up_c, "%zu", self->_->update_count);
 	self->put_str(self, "hello glx!", (t_pos){16, 16}, self->frame_count % 16);
