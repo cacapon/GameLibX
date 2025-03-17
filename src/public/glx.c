@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 14:37:34 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 14:39:22 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	glx_quit(t_glx *self, int sts_code)
 	}
 	mlx_destroy_window(self->mlx, self->win);
 	mlx_destroy_display(self->mlx);
+	free(self->_);
 	free(self);
 	exit(sts_code);
 }
