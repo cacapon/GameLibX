@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 13:55:46 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 14:00:06 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,12 @@ t_glx	*glx_init(char *title, int win_w, int win_h)
 	return (glx);
 }
 
+/**
+ * @brief glxを終了します。内部で確保したメモリを開放します。
+ * 
+ * @param self 
+ * @param sts_code 
+ */
 void	glx_quit(t_glx *self, int sts_code)
 {
 	mlx_do_key_autorepeaton(self->mlx);
@@ -78,6 +84,13 @@ static int	_loop_function(t_glx *self)
 	return (0);
 }
 
+/**
+ * @brief glxを実行します。キー入力を受け付けながら、frame毎にupdate,drawを実行します。
+ * 
+ * @param self 
+ * @param update : 更新用の関数ポインタ
+ * @param draw : 描画用の関数ポインタ
+ */
 void	glx_run(t_glx *self, int (*update)(t_glx *), int (*draw)(t_glx *))
 {
 	mlx_do_key_autorepeatoff(self->mlx);
