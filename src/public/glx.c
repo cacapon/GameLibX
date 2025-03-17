@@ -6,18 +6,27 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 12:41:10 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 13:35:16 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "glx.h"
+
+t_glx_prv	*glx_init_private(void)
+{
+	t_glx_prv	*prv;
+
+	prv = ft_calloc(1, sizeof(t_glx_prv));
+	prv->update_count = 0;
+	return (prv);
+}
 
 t_glx	*glx_init(char *title, int win_w, int win_h)
 {
 	t_glx	*glx;
 
 	glx = ft_calloc(1, sizeof(t_glx));
-	glx->_update_count = 0;
+	glx->_ = glx_init_private();
 	glx->frame_count = 0;
 	glx->mlx = mlx_init();
 	glx->win = mlx_new_window(glx->mlx, win_w, win_h, title);
@@ -62,8 +71,8 @@ void	glx_quit(t_glx *self, int sts_code)
 
 int	loop_function(t_glx *self)
 {
-	self->_update_count = (self->_update_count + 1) % SIZE_MAX;
-	if (self->_update_count % UPDATE_COUNT == 0)
+	self->_->update_count = (self->_->update_count + 1) % SIZE_MAX;
+	if (self->_->update_count % UPDATE_COUNT == 0)
 	{
 		self->frame_count = (self->frame_count + 1) % SIZE_MAX;
 		self->update(self);
