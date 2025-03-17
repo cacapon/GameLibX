@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 13:35:16 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 13:38:53 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_glx_prv	*glx_init_private(void)
 
 	prv = ft_calloc(1, sizeof(t_glx_prv));
 	prv->update_count = 0;
+	prv->error = glx_error;
 	return (prv);
 }
 
@@ -37,17 +38,12 @@ t_glx	*glx_init(char *title, int win_w, int win_h)
 	glx->put_str = glx_put_str;
 	glx->quit = glx_quit;
 	glx->btnp = glx_btnp;
-	glx->_error = _glx_error;
 	_glx_key_state_init(glx);
 	_glx_key_just_state_init(glx);
 	return (glx);
 }
 
-void	_glx_error(t_glx *self, char *mes)
-{
-	ft_putstr_fd(mes, STDERR_FILENO);
-	self->quit(self, EXIT_FAILURE);
-}
+
 
 void	glx_put_str(t_glx *self, char *str, t_pos pos, t_glx_color_i color)
 {

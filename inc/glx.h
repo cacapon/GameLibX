@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:47:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 13:34:34 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 13:38:32 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 typedef struct s_glx_prv
 {
 	size_t		update_count;
+	
+	void		(*error)(t_glx *, char *);
 }				t_glx_prv;
 
 typedef struct s_glx
@@ -54,11 +56,12 @@ typedef struct s_glx
 	void		(*put_str)(t_glx *, char *, t_pos, t_glx_color_i);
 	void		(*run)(t_glx *, int (*)(t_glx *), int (*)(t_glx *));
 	void		(*quit)(t_glx *, int);
-	void		(*_error)(t_glx *, char *);
 }				t_glx;
 
-void			_glx_error(t_glx *self, char *mes);
+// private
+void			glx_error(t_glx *self, char *mes);
 
+// public
 t_glx			*glx_init(char *title, int win_w, int win_h);
 void			glx_load_img(t_glx *self, char *path, int w, int h);
 void			glx_put_img(t_glx *self, int img_i, t_pos pos);
