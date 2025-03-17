@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 12:12:57 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 12:41:10 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	_glx_error(t_glx *self, char *mes)
 	self->quit(self, EXIT_FAILURE);
 }
 
-void	glx_put_str(t_glx *self, char *str, t_pos pos, t_glx_color_index color)
+void	glx_put_str(t_glx *self, char *str, t_pos pos, t_glx_color_i color)
 {
 	mlx_string_put(self->mlx, self->win, pos.x, pos.y, glx_get_color(color),
 		str);
