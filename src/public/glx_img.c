@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 11:48:46 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 14:03:44 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 15:25:36 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ void	glx_put_img(t_glx *self, int img_i, t_pos pos)
 	static int	(*put_img)(void *, void *, void *, int,
 			int) = mlx_put_image_to_window;
 
+	if (img_i >= self->imgc)
+		self->_->error(self, "glx_put_img: img_i is invalid number.");
 	put_img(self->mlx, self->win, self->imgs[img_i], pos.x, pos.y);
 }
