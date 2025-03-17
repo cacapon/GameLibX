@@ -2,18 +2,18 @@
 #include <stdio.h>
 
 int	draw(t_glx *self)
-{  
-    char flm_c[20];
-    char up_c[20];
+{
+	char	flm_c[20];
+	char	up_c[20];
 
-    mlx_clear_window(self->mlx, self->win);    
-    sprintf(flm_c, "%zu", self->frame_count);
-    sprintf(up_c, "%zu", self->_update_count);
-    self->put_str(self, "hello glx!", 16, 16, self->frame_count % 16);
-	self->put_str(self, flm_c, 16, 32, GLX_COLOR_WHITE);
-	self->put_str(self, up_c, 16, 48, GLX_COLOR_WHITE);
-    if (self->btnp(self, XK_a))
-		self->put_img(self, 0, 0, 0);
+	mlx_clear_window(self->mlx, self->win);
+	sprintf(flm_c, "%zu", self->frame_count);
+	sprintf(up_c, "%zu", self->_update_count);
+	self->put_str(self, "hello glx!", (t_pos){16, 16}, self->frame_count % 16);
+	self->put_str(self, flm_c, (t_pos){16, 32}, GLX_COLOR_WHITE);
+	self->put_str(self, up_c, (t_pos){16, 48}, GLX_COLOR_WHITE);
+	if (self->btnp(self, XK_a))
+		self->put_img(self, 0, (t_pos){0, 0});
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 11:37:31 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 11:41:45 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,14 @@ void	glx_load_img(t_glx *self, char *path, int w, int h)
 	self->imgc++;
 }
 
-void	glx_put_img(t_glx *self, int img_i, int x, int y)
+void	glx_put_img(t_glx *self, int img_i, t_pos pos)
 {
-	mlx_put_image_to_window(self->mlx, self->win, self->imgs[img_i], x, y);
+	mlx_put_image_to_window(self->mlx, self->win, self->imgs[img_i], pos.x, pos.y);
 }
 
-// TODO: 引数が多すぎるのでx,yをvectorにまとめる
-void	glx_put_str(t_glx *self, char *str, int x, int y, t_glx_color_index color)
+void	glx_put_str(t_glx *self, char *str, t_pos pos, t_glx_color_index color)
 {
-	mlx_string_put(self->mlx, self->win, x, y, glx_get_color(color), str);
+	mlx_string_put(self->mlx, self->win, pos.x, pos.y, glx_get_color(color), str);
 }
 
 void	glx_quit(t_glx *self, int sts_code)
