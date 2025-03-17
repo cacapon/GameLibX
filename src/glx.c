@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 11:41:45 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 11:50:36 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,19 +84,6 @@ bool glx_btnp(t_glx *self, int keycode)
 	if (!self->key_just_state[keycode])
 		return (false);
 	return (true);
-}
-
-void	glx_load_img(t_glx *self, char *path, int w, int h)
-{
-	self->imgs[self->imgc] = mlx_xpm_file_to_image(self->mlx, path, &w, &h);
-	if (!self->imgs[self->imgc])
-		self->_error(self, "glx_load_img: Failed to load image.");
-	self->imgc++;
-}
-
-void	glx_put_img(t_glx *self, int img_i, t_pos pos)
-{
-	mlx_put_image_to_window(self->mlx, self->win, self->imgs[img_i], pos.x, pos.y);
 }
 
 void	glx_put_str(t_glx *self, char *str, t_pos pos, t_glx_color_index color)
