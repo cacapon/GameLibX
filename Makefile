@@ -6,7 +6,7 @@
 #    By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 12:57:47 by ttsubo            #+#    #+#              #
-#    Updated: 2025/03/17 14:22:36 by ttsubo           ###   ########.fr        #
+#    Updated: 2025/03/17 16:11:06 by ttsubo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	= libglx.a
 CC		= cc
 
 W_FLG	= -Wall -Wextra -Werror
-I_FLG	= -Iinc -Ilib/mlx -Ilib/libft
+I_FLG	= -I. -Iinc -Ilib/mlx -Ilib/libft
 L_FLG	= -Llib/mlx -lmlx -lX11 -lXext 
 
 GLX_PRI_DIR = src/private/
