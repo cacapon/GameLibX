@@ -6,29 +6,13 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 11:50:36 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 12:12:05 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "glx.h"
 
-void	glx_key_state_init(t_glx *self)
-{
-	int	i;
 
-	i = 0;
-	while (i < KEY_MAX)
-		self->key_state[i++] = false;
-}
-
-void	glx_key_just_state_init(t_glx *self)
-{
-	int	i;
-
-	i = 0;
-	while (i < KEY_MAX)
-		self->key_just_state[i++] = false;
-}
 
 t_glx	*glx_init(char *title, int win_w, int win_h)
 {
@@ -47,8 +31,8 @@ t_glx	*glx_init(char *title, int win_w, int win_h)
 	glx->quit = glx_quit;
 	glx->btnp = glx_btnp;
 	glx->_error = _glx_error;
-	glx_key_state_init(glx);
-	glx_key_just_state_init(glx);
+	_glx_key_state_init(glx);
+	_glx_key_just_state_init(glx);
 	return (glx);
 }
 
@@ -58,33 +42,7 @@ void	_glx_error(t_glx *self, char *mes)
 	self->quit(self, EXIT_FAILURE);
 }
 
-int	_glx_key_pressed(int keycode, t_glx *glx)
-{
-	if (keycode < 0 || keycode > KEY_MAX)
-		return (1);
-	glx->key_state[keycode] = true;
-	glx->key_just_state[keycode] = true;
-	ft_printf("key_pressed,%d\n", keycode);
-	return (0);
-}
 
-int	_glx_key_released(int keycode, t_glx *glx)
-{
-	if (keycode < 0 || keycode > KEY_MAX)
-		return (1);
-	glx->key_state[keycode] = false;
-	ft_printf("key_released,%d\n", keycode);
-	return (0);
-}
-
-bool glx_btnp(t_glx *self, int keycode)
-{
-	if (keycode < 0 || keycode > KEY_MAX)
-		return (false);
-	if (!self->key_just_state[keycode])
-		return (false);
-	return (true);
-}
 
 void	glx_put_str(t_glx *self, char *str, t_pos pos, t_glx_color_index color)
 {
@@ -113,7 +71,7 @@ int	loop_function(t_glx *self)
 		self->frame_count = (self->frame_count + 1) % SIZE_MAX;
 		self->update(self);
 		self->draw(self);
-		glx_key_just_state_init(self);
+		_glx_key_just_state_init(self);
 	}
 	return (0);
 }
