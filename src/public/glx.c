@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 13:38:53 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 13:41:06 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ t_glx	*glx_init(char *title, int win_w, int win_h)
 	return (glx);
 }
 
-
-
 void	glx_put_str(t_glx *self, char *str, t_pos pos, t_glx_color_i color)
 {
 	mlx_string_put(self->mlx, self->win, pos.x, pos.y, glx_get_color(color),
@@ -65,7 +63,7 @@ void	glx_quit(t_glx *self, int sts_code)
 	exit(sts_code);
 }
 
-int	loop_function(t_glx *self)
+static int	_loop_function(t_glx *self)
 {
 	self->_->update_count = (self->_->update_count + 1) % SIZE_MAX;
 	if (self->_->update_count % UPDATE_COUNT == 0)
@@ -83,7 +81,7 @@ void	glx_run(t_glx *self, int (*update)(t_glx *), int (*draw)(t_glx *))
 	mlx_do_key_autorepeatoff(self->mlx);
 	self->update = update;
 	self->draw = draw;
-	mlx_loop_hook(self->mlx, loop_function, self);
+	mlx_loop_hook(self->mlx, _loop_function, self);
 	mlx_hook(self->win, 2, (1L << 0), _glx_key_pressed, self);
 	mlx_hook(self->win, 3, (1L << 1), _glx_key_released, self);
 	mlx_loop(self->mlx);
