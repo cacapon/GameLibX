@@ -6,13 +6,13 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 13:43:09 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/17 13:55:46 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "glx.h"
 
-t_glx_prv	*glx_init_private(void)
+static t_glx_prv	*_glx_init_private(void)
 {
 	t_glx_prv	*prv;
 
@@ -22,12 +22,20 @@ t_glx_prv	*glx_init_private(void)
 	return (prv);
 }
 
+/**
+ * @brief glxを初期化します。
+ * 
+ * @param title 
+ * @param win_w 
+ * @param win_h 
+ * @return t_glx* 
+ */
 t_glx	*glx_init(char *title, int win_w, int win_h)
 {
 	t_glx	*glx;
 
 	glx = ft_calloc(1, sizeof(t_glx));
-	glx->_ = glx_init_private();
+	glx->_ = _glx_init_private();
 	glx->frame_count = 0;
 	glx->mlx = mlx_init();
 	glx->win = mlx_new_window(glx->mlx, win_w, win_h, title);
