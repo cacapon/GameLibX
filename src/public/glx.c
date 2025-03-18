@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/18 13:26:13 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 13:36:14 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,18 @@ t_glx	*glx_init(char *title, int win_w, int win_h, size_t update_lim)
 /**
  * @brief glxを終了します。内部で確保したメモリを開放します。
  *
- * @param self
  * @param sts_code
  */
-void	glx_quit(t_glx *self, int sts_code)
+void	glx_quit(int sts_code)
 {
-	mlx_do_key_autorepeaton(self->mlx);
-	while (self->imgc)
+	t_glx *glx;
+	
+	glx = get_glx();
+	mlx_do_key_autorepeaton(glx->mlx);
+	while (glx->imgc)
 	{
-		self->imgc--;
-		mlx_destroy_image(self->mlx, self->imgs[self->imgc]);
+		glx->imgc--;
+		mlx_destroy_image(glx->mlx, glx->imgs[glx->imgc]);
 	}
 	mlx_destroy_window(glx->mlx, glx->win);
 	mlx_destroy_display(glx->mlx);
@@ -78,16 +80,16 @@ void	glx_quit(t_glx *self, int sts_code)
 
 static int	_loop_function(void)
 {
-	t_glx	*self;
+	t_glx	*glx;
 
-	self = get_glx();
-	self->_->update_count = (self->_->update_count + 1) % SIZE_MAX;
-	if (self->_->update_count % self->_->update_lim == 0)
+	glx = get_glx();
+	glx->_->update_count = (glx->_->update_count + 1) % SIZE_MAX;
+	if (glx->_->update_count % glx->_->update_lim == 0)
 	{
-		self->frame_count = (self->frame_count + 1) % SIZE_MAX;
-		self->update(self);
-		self->draw(self);
-		_glx_key_just_state_init(self);
+		glx->frame_count = (glx->frame_count + 1) % SIZE_MAX;
+		glx->update(glx);
+		glx->draw(glx);
+		_glx_key_just_state_init(glx);
 	}
 	return (0);
 }
@@ -95,7 +97,6 @@ static int	_loop_function(void)
 /**
  * @brief glxを実行します。キー入力を受け付けながら、frame毎にupdate,drawを実行します。
  *
- * @param self
  * @param update : 更新用の関数ポインタ
  * @param draw : 描画用の関数ポインタ
  */

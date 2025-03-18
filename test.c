@@ -25,7 +25,7 @@ int	update(void *param)
 
 	glx = get_glx();
 	if (glx->btnp(glx, XK_q))
-		glx->quit(glx, 0);
+		glx->quit(EXIT_SUCCESS);
 	return (0);
 }
 
