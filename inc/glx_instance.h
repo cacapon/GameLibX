@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 11:49:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/18 13:25:01 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 13:55:46 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include "glx_struct.h"
 
 t_glx	*get_glx(void);
-void    set_glx(t_glx *glx);
+void	set_glx(t_glx *glx);
 
 #endif
