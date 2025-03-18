@@ -14,7 +14,7 @@ int	draw(void *param)
 	glx->text("hello glx!", (t_pos){16, 16}, glx->frame_count % 16);
 	glx->text(flm_c, (t_pos){16, 32}, GLX_COLOR_WHITE);
 	glx->text(up_c, (t_pos){16, 48}, GLX_COLOR_WHITE);
-	if (glx->btnp(glx, XK_a))
+	if (glx->btn(XK_a))
 		glx->put_img(glx, 0, (t_pos){0, 0});
 	return (0);
 }
@@ -24,7 +24,7 @@ int	update(void *param)
 	t_glx	*glx;
 
 	glx = get_glx();
-	if (glx->btnp(glx, XK_q))
+	if (glx->btnp(XK_q))
 		glx->quit(EXIT_SUCCESS);
 	return (0);
 }

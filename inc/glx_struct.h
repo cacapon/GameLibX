@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 12:09:55 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/18 13:43:35 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 13:49:21 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ typedef struct s_glx
 	int					imgc;
 	bool				key_state[KEY_MAX];
 	bool				key_just_state[KEY_MAX];
-	int					(*btnp)(t_glx *, int);
+	int					(*btnp)(int);
+	int					(*btn)(int);
 	int					(*update)(void *);
 	int					(*draw)(void *);
 	void				(*load_img)(t_glx *, char *, int, int);
