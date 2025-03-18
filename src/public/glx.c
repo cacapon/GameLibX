@@ -6,18 +6,11 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/18 13:19:55 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 13:26:13 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "glx.h"
-
-static t_glx		*g_glx_ins = NULL;
-
-t_glx	*get_glx(void)
-{
-	return (g_glx_ins);
-}
 
 static t_glx_prv	*_glx_init_private(size_t update_lim)
 {
@@ -58,7 +51,7 @@ t_glx	*glx_init(char *title, int win_w, int win_h, size_t update_lim)
 	glx->cls = glx_cls;
 	_glx_key_state_init(glx);
 	_glx_key_just_state_init(glx);
-	g_glx_ins = glx;
+	set_glx(glx);
 	return (glx);
 }
 
@@ -82,8 +75,11 @@ void	glx_quit(t_glx *self, int sts_code)
 	exit(sts_code);
 }
 
-static int	_loop_function(t_glx *self)
+static int	_loop_function(void)
 {
+	t_glx	*self;
+
+	self = get_glx();
 	self->_->update_count = (self->_->update_count + 1) % SIZE_MAX;
 	if (self->_->update_count % self->_->update_lim == 0)
 	{
@@ -110,7 +106,7 @@ void	glx_run(int (*update)(void *), int (*draw)(void *))
 	mlx_do_key_autorepeatoff(glx->mlx);
 	glx->update = update;
 	glx->draw = draw;
-	mlx_loop_hook(glx->mlx, _loop_function, glx);
+	mlx_loop_hook(glx->mlx, _loop_function, NULL);
 	mlx_hook(glx->win, 2, (1L << 0), _glx_key_pressed, glx);
 	mlx_hook(glx->win, 3, (1L << 1), _glx_key_released, glx);
 	mlx_loop(glx->mlx);

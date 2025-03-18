@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:47:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/18 13:15:20 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 13:26:41 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "inc/glx_str.h"
 # include "inc/glx_struct.h"
 # include "inc/glx_win.h"
+# include "inc/glx_instance.h"
 
 // submodule
 # include "lib/libft/libft.h"
