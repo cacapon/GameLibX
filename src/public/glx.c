@@ -6,17 +6,17 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/18 13:09:33 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 13:19:55 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "glx.h"
 
-static t_glx *glx_ins = NULL;
+static t_glx		*g_glx_ins = NULL;
 
 t_glx	*get_glx(void)
 {
-	return (glx_ins);
+	return (g_glx_ins);
 }
 
 static t_glx_prv	*_glx_init_private(size_t update_lim)
@@ -32,12 +32,12 @@ static t_glx_prv	*_glx_init_private(size_t update_lim)
 
 /**
  * @brief glxを初期化します。
- * 
- * @param title 
- * @param win_w 
+ *
+ * @param title
+ * @param win_w
  * @param win_h
  * @param update_lim
- * @return t_glx* 
+ * @return t_glx*
  */
 t_glx	*glx_init(char *title, int win_w, int win_h, size_t update_lim)
 {
@@ -58,15 +58,15 @@ t_glx	*glx_init(char *title, int win_w, int win_h, size_t update_lim)
 	glx->cls = glx_cls;
 	_glx_key_state_init(glx);
 	_glx_key_just_state_init(glx);
-	glx_ins = glx;
+	g_glx_ins = glx;
 	return (glx);
 }
 
 /**
  * @brief glxを終了します。内部で確保したメモリを開放します。
- * 
- * @param self 
- * @param sts_code 
+ *
+ * @param self
+ * @param sts_code
  */
 void	glx_quit(t_glx *self, int sts_code)
 {
@@ -97,18 +97,21 @@ static int	_loop_function(t_glx *self)
 
 /**
  * @brief glxを実行します。キー入力を受け付けながら、frame毎にupdate,drawを実行します。
- * 
- * @param self 
+ *
+ * @param self
  * @param update : 更新用の関数ポインタ
  * @param draw : 描画用の関数ポインタ
  */
-void	glx_run(t_glx *self, int (*update)(t_glx *), int (*draw)(t_glx *))
+void	glx_run(int (*update)(void *), int (*draw)(void *))
 {
-	mlx_do_key_autorepeatoff(self->mlx);
-	self->update = update;
-	self->draw = draw;
-	mlx_loop_hook(self->mlx, _loop_function, self);
-	mlx_hook(self->win, 2, (1L << 0), _glx_key_pressed, self);
-	mlx_hook(self->win, 3, (1L << 1), _glx_key_released, self);
-	mlx_loop(self->mlx);
+	t_glx	*glx;
+
+	glx = get_glx();
+	mlx_do_key_autorepeatoff(glx->mlx);
+	glx->update = update;
+	glx->draw = draw;
+	mlx_loop_hook(glx->mlx, _loop_function, glx);
+	mlx_hook(glx->win, 2, (1L << 0), _glx_key_pressed, glx);
+	mlx_hook(glx->win, 3, (1L << 1), _glx_key_released, glx);
+	mlx_loop(glx->mlx);
 }
