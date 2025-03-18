@@ -6,11 +6,18 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 14:27:59 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 13:09:33 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "glx.h"
+
+static t_glx *glx_ins = NULL;
+
+t_glx	*get_glx(void)
+{
+	return (glx_ins);
+}
 
 static t_glx_prv	*_glx_init_private(size_t update_lim)
 {
@@ -51,6 +58,7 @@ t_glx	*glx_init(char *title, int win_w, int win_h, size_t update_lim)
 	glx->cls = glx_cls;
 	_glx_key_state_init(glx);
 	_glx_key_just_state_init(glx);
+	glx_ins = glx;
 	return (glx);
 }
 
