@@ -69,9 +69,10 @@ void	glx_quit(t_glx *self, int sts_code)
 		self->imgc--;
 		mlx_destroy_image(self->mlx, self->imgs[self->imgc]);
 	}
-	mlx_destroy_window(self->mlx, self->win);
-	mlx_destroy_display(self->mlx);
-	free(self);
+	mlx_destroy_window(glx->mlx, glx->win);
+	mlx_destroy_display(glx->mlx);
+	free(glx->_);
+	free(glx);
 	exit(sts_code);
 }
 
