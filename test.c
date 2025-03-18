@@ -15,7 +15,7 @@ int	draw(void *param)
 	glx->text(flm_c, (t_pos){16, 32}, GLX_COLOR_WHITE);
 	glx->text(up_c, (t_pos){16, 48}, GLX_COLOR_WHITE);
 	if (glx->btn(XK_a))
-		glx->put_img(glx, 0, (t_pos){0, 0});
+		glx->put_img(0, (t_pos){0, 0});
 	return (0);
 }
 
@@ -34,6 +34,6 @@ int	main(void)
 	t_glx *glx;
 
 	glx = glx_init("test", 500, 500, 500);
-	glx->load_img(glx, "./plane.xpm", 16, 16);
+	glx->load_img("./plane.xpm", 16, 16);
 	glx->run(update, draw);
 }
