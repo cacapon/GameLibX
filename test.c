@@ -8,7 +8,7 @@ int	draw(void *param)
 	char	up_c[20];
 
 	glx = get_glx();
-	glx->cls(glx);
+	glx->cls();
 	sprintf(flm_c, "%zu", glx->frame_count);
 	sprintf(up_c, "%zu", glx->_->update_count);
 	glx->put_str(glx, "hello glx!", (t_pos){16, 16}, glx->frame_count % 16);

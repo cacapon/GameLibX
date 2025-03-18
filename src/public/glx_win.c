@@ -6,18 +6,21 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 14:13:57 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 14:19:12 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 13:38:36 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "glx_win.h"
 
 /**
- * @brief
+ * @brief 画面をクリアします。
  *
  * @param self
  */
-void	glx_cls(t_glx *self)
+void	glx_cls(void)
 {
-	mlx_clear_window(self->mlx, self->win);
+	t_glx	*glx;
+
+	glx = get_glx();
+	mlx_clear_window(glx->mlx, glx->win);
 }
