@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:47:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/18 13:49:05 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 14:04:16 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@
 // standard library
 # include <X11/keysym.h>
 
-// private
-void	glx_error(t_glx *self, char *mes);
-
-// public
+// public methods.
 
 t_glx	*glx_init(char *title, int win_w, int win_h, size_t update_lim);
 t_glx   *get_glx(void);

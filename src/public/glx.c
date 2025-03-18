@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/18 13:50:48 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 14:02:19 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_glx_prv	*_glx_init_private(size_t update_lim)
 	prv = ft_calloc(1, sizeof(t_glx_prv));
 	prv->update_count = 0;
 	prv->update_lim = update_lim;
-	prv->error = glx_error;
+	prv->error = _glx_error;
 	return (prv);
 }
 

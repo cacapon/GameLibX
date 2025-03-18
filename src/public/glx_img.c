@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 11:48:46 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/18 13:53:50 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 14:02:45 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	glx_load_img(char *path, int w, int h)
 	glx = get_glx();
 	glx->imgs[glx->imgc] = mlx_xpm_file_to_image(glx->mlx, path, &w, &h);
 	if (!glx->imgs[glx->imgc])
-		glx->_->error(glx, "glx_load_img: Failed to load image.");
+		glx->_->error("glx_load_img: Failed to load image.");
 	glx->imgc++;
 }
 
@@ -45,6 +45,6 @@ void	glx_put_img(int img_i, t_pos pos)
 	glx = get_glx();
 	put_img = mlx_put_image_to_window;
 	if (img_i >= glx->imgc)
-		glx->_->error(glx, "glx_put_img: img_i is invalid number.");
+		glx->_->error("glx_put_img: img_i is invalid number.");
 	put_img(glx->mlx, glx->win, glx->imgs[img_i], pos.x, pos.y);
 }

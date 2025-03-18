@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:37:06 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/18 13:56:58 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 14:01:00 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @param self 
  * @param mes 
  */
-void	glx_error(char *mes)
+void	_glx_error(char *mes)
 {
 	t_glx	*glx;
 

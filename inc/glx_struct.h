@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 12:09:55 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/18 13:54:20 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 14:02:27 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_glx_prv
 	size_t				update_count;
 	size_t				update_lim;
 
-	void				(*error)(t_glx *, char *);
+	void				(*error)(char *);
 }						t_glx_prv;
 
 typedef struct s_glx
