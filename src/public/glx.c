@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/18 13:49:58 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 13:50:48 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ t_glx	*glx_init(char *title, int win_w, int win_h, size_t update_lim)
  */
 void	glx_quit(int sts_code)
 {
-	t_glx *glx;
-	
+	t_glx	*glx;
+
 	glx = get_glx();
 	mlx_do_key_autorepeaton(glx->mlx);
 	while (glx->imgc)

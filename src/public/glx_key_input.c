@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 11:52:07 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/18 13:48:38 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 13:51:04 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	glx_btnp(int keycode)
  * @param keycode 
  * @return int 押されている場合は1を返します。それ以外は0。
  */
-int glx_btn(int keycode)
+int	glx_btn(int keycode)
 {
 	t_glx	*glx;
 
