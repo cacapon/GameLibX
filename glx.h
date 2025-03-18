@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:47:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/18 13:33:20 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 13:42:38 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "inc/glx_define.h"
 # include "inc/glx_img.h"
 # include "inc/glx_private.h"
-# include "inc/glx_str.h"
+# include "inc/glx_text.h"
 # include "inc/glx_struct.h"
 # include "inc/glx_win.h"
 # include "inc/glx_instance.h"
