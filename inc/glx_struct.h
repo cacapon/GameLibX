@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 12:09:55 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/19 10:16:51 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/19 11:18:34 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ typedef struct s_glx_prv
 	void		(*error)(char *);
 }				t_glx_prv;
 
+typedef struct s_glx_user
+{
+	int			(*update)(void *);
+	int			(*draw)(void *);
+	int			(*clean)(void *);
+	void		*param;
+}				t_glx_user;
+
 typedef struct s_glx
 {
 	t_glx_prv	*_;
@@ -41,10 +49,9 @@ typedef struct s_glx
 	int			imgc;
 	bool		key_state[KEY_MAX];
 	bool		key_just_state[KEY_MAX];
+	t_glx_user	*user;
 	int			(*btnp)(int);
 	int			(*btn)(int);
-	int			(*update)(void *);
-	int			(*draw)(void *);
 	void		(*load_img)(char *, int, int);
 	void		(*put_img)(int, t_pos);
 	void		(*text)(char *, t_pos, t_glx_color_i);
