@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glx_private.h                                      :+:      :+:    :+:   */
+/*   glx_hook.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 11:56:38 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/19 12:08:43 by ttsubo           ###   ########.fr       */
+/*   Created: 2025/03/19 12:12:12 by ttsubo            #+#    #+#             */
+/*   Updated: 2025/03/19 13:41:37 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GLX_PRIVATE_H
-# define GLX_PRIVATE_H
+#ifndef GLX_HOOK_H
+# define GLX_HOOK_H
 
-# include "glx_struct.h"
+# include "glx.h"
 
-void	_glx_error(char *mes);
-void	_glx_key_state_init(t_glx *self);
-void	_glx_key_just_state_init(t_glx *self);
-int		_glx_key_pressed(int keycode, t_glx *glx);
-int		_glx_key_released(int keycode, t_glx *glx);
-int		_glx_win_exit(t_glx *glx);
+void	glx_hook(int (*u)(void *), int (*d)(void *), int (*c)(void *));
 
 #endif

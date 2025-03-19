@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:47:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/19 11:55:23 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/19 12:16:07 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "inc/glx_struct.h"
 # include "inc/glx_win.h"
 # include "inc/glx_instance.h"
+# include "inc/glx_hook.h"
 
 // submodule
 # include "lib/libft/libft.h"
@@ -34,7 +35,6 @@
 
 t_glx	*glx_init(char *title, int win_w, int win_h, size_t update_lim);
 t_glx   *get_glx(void);
-void	glx_hook(int (*update)(void *), int (*draw)(void *), int (*clean)(void *));
 void	glx_run(void *);
 void	glx_quit(int sts_code);
 int		glx_btnp(int keycode);
