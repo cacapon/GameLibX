@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/19 11:42:38 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/19 11:45:28 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	glx_quit(int sts_code)
 	exit(sts_code);
 }
 
-static int	_loop_function(void *param)
+static int	_loop_function(void)
 {
 	t_glx	*glx;
 
@@ -92,19 +92,19 @@ static int	_loop_function(void *param)
 	if (glx->_->update_count % glx->_->update_lim == 0)
 	{
 		glx->frame_count = (glx->frame_count + 1) % SIZE_MAX;
-		glx->user->update(param);
-		glx->user->draw(param);
+		glx->user->update(glx->user->param);
+		glx->user->draw(glx->user->param);
 		_glx_key_just_state_init(glx);
 	}
 	return (0);
 }
 
-void	glx_hook(void *param)
+void	glx_hook(void)
 {
 	t_glx	*glx;
 
 	glx = get_glx();
-	mlx_loop_hook(glx->mlx, _loop_function, param);
+	mlx_loop_hook(glx->mlx, _loop_function, NULL);
 	mlx_hook(glx->win, 2, (1L << 0), _glx_key_pressed, glx);
 	mlx_hook(glx->win, 3, (1L << 1), _glx_key_released, glx);
 }
@@ -116,7 +116,7 @@ void	glx_hook(void *param)
  * @param draw		: 描画用の関数ポインタ
  * @param param		: 更新・描画用のパラメータ
  */
-void	glx_run(int (*update)(void *), int (*draw)(void *))
+void	glx_run(int (*update)(void *), int (*draw)(void *), void *param)
 {
 	t_glx	*glx;
 
@@ -124,5 +124,6 @@ void	glx_run(int (*update)(void *), int (*draw)(void *))
 	mlx_do_key_autorepeatoff(glx->mlx);
 	glx->user->update = update;
 	glx->user->draw = draw;
+	glx->user->param = param;
 	mlx_loop(glx->mlx);
 }
