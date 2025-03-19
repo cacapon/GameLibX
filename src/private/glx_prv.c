@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:37:06 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/19 12:01:02 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/19 21:02:36 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	_glx_error(char *mes)
 	t_glx	*glx;
 
 	glx = get_glx();
+	ft_putstr_fd("Error\n", STDERR_FILENO);
 	ft_putstr_fd(mes, STDERR_FILENO);
 	glx->quit(EXIT_FAILURE);
 }
