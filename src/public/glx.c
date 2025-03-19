@@ -74,6 +74,7 @@ void	glx_quit(int sts_code)
 	}
 	mlx_destroy_window(glx->mlx, glx->win);
 	mlx_destroy_display(glx->mlx);
+	free(glx->mlx);
 	free(glx->_);
 	free(glx);
 	exit(sts_code);
