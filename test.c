@@ -90,6 +90,6 @@ int	main(void)
 	test = ft_calloc(1, sizeof(t_test_data));
 	*test = (t_test_data){.player_pos = (t_pos){0,0}};
 	glx->load_img("./plane.xpm", 16, 16);
-	glx->hook();
-	glx->run(update, draw, test);
+	glx->hook(update, draw);
+	glx->run(test);
 }

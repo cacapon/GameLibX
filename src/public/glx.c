@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/19 11:45:28 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/19 11:49:41 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,19 @@ static int	_loop_function(void)
 	return (0);
 }
 
-void	glx_hook(void)
+/**
+ * @brief 
+ * 
+ * @param update	: 更新用の関数ポインタ
+ * @param draw		: 描画用の関数ポインタ
+ */
+ void	glx_hook(int (*update)(void *), int (*draw)(void *))
 {
 	t_glx	*glx;
 
 	glx = get_glx();
+	glx->user->update = update;
+	glx->user->draw = draw;
 	mlx_loop_hook(glx->mlx, _loop_function, NULL);
 	mlx_hook(glx->win, 2, (1L << 0), _glx_key_pressed, glx);
 	mlx_hook(glx->win, 3, (1L << 1), _glx_key_released, glx);
@@ -112,18 +120,14 @@ void	glx_hook(void)
 /**
  * @brief glxを実行します。キー入力を受け付けながら、frame毎にupdate,drawを実行します。
  *
- * @param update	: 更新用の関数ポインタ
- * @param draw		: 描画用の関数ポインタ
  * @param param		: 更新・描画用のパラメータ
  */
-void	glx_run(int (*update)(void *), int (*draw)(void *), void *param)
+void	glx_run(void *param)
 {
 	t_glx	*glx;
 
 	glx = get_glx();
 	mlx_do_key_autorepeatoff(glx->mlx);
-	glx->user->update = update;
-	glx->user->draw = draw;
 	glx->user->param = param;
 	mlx_loop(glx->mlx);
 }
