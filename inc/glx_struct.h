@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 12:09:55 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 14:27:05 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 14:02:27 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_glx_prv
 	size_t				update_count;
 	size_t				update_lim;
 
-	void				(*error)(t_glx *, char *);
+	void				(*error)(char *);
 }						t_glx_prv;
 
 typedef struct s_glx
@@ -43,15 +43,16 @@ typedef struct s_glx
 	int					imgc;
 	bool				key_state[KEY_MAX];
 	bool				key_just_state[KEY_MAX];
-	int					(*btnp)(t_glx *, int);
-	int					(*update)(t_glx *);
-	int					(*draw)(t_glx *);
-	void				(*load_img)(t_glx *, char *, int, int);
-	void				(*put_img)(t_glx *, int, t_pos);
-	void				(*put_str)(t_glx *, char *, t_pos, t_glx_color_i);
-	void				(*run)(t_glx *, int (*)(t_glx *), int (*)(t_glx *));
-	void				(*quit)(t_glx *, int);
-	void				(*cls)(t_glx *);
+	int					(*btnp)(int);
+	int					(*btn)(int);
+	int					(*update)(void *);
+	int					(*draw)(void *);
+	void				(*load_img)(char *, int, int);
+	void				(*put_img)(int, t_pos);
+	void				(*text)(char *, t_pos, t_glx_color_i);
+	void				(*run)(int (*update)(void *), int (*draw)(void *));
+	void				(*quit)(int);
+	void				(*cls)(void);
 }						t_glx;
 
 #endif

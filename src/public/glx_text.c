@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glx_win.h                                          :+:      :+:    :+:   */
+/*   glx_text.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 14:14:27 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/18 13:38:55 by ttsubo           ###   ########.fr       */
+/*   Created: 2025/03/17 11:48:46 by ttsubo            #+#    #+#             */
+/*   Updated: 2025/03/18 13:43:06 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GLX_WIN_H
-# define GLX_WIN_H
+#include "glx_text.h"
 
-# include "glx.h"
+/**
+ * @brief 文字列textを位置posにcolorの色で出力します。
+ *
+ * @param str
+ * @param pos
+ * @param color
+ */
+void	glx_text(char *text, t_pos pos, t_glx_color_i color)
+{
+	t_glx	*glx;
+	void	*mlx;
+	void	*win;
 
-void	glx_cls(void);
-
-#endif
+	glx = get_glx();
+	mlx = glx->mlx;
+	win = glx->win;
+	mlx_string_put(mlx, win, pos.x, pos.y, glx_get_color(color), text);
+}

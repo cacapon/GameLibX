@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glx_str.h                                          :+:      :+:    :+:   */
+/*   glx_instance.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 11:49:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 14:16:36 by ttsubo           ###   ########.fr       */
+/*   Created: 2025/03/18 13:22:51 by ttsubo            #+#    #+#             */
+/*   Updated: 2025/03/18 13:25:37 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GLX_STR_H
-# define GLX_STR_H
+#include "glx_instance.h"
 
-# include "glx.h"
-# include "glx_define.h"
-# include "glx_struct.h"
+static t_glx	*g_glx_ins = NULL;
 
-void	glx_put_str(t_glx *self, char *str, t_pos pos, t_glx_color_i color);
+t_glx	*get_glx(void)
+{
+	return (g_glx_ins);
+}
 
-#endif
+void	set_glx(t_glx *glx)
+{
+	g_glx_ins = glx;
+}
