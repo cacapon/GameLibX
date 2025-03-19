@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/19 11:54:55 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/19 11:58:31 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ static int	_loop_function(void)
 	mlx_loop_hook(glx->mlx, _loop_function, NULL);
 	mlx_hook(glx->win, 2, (1L << 0), _glx_key_pressed, glx);
 	mlx_hook(glx->win, 3, (1L << 1), _glx_key_released, glx);
+	mlx_hook(glx->win, 17, (1L<< 0), _glx_win_exit, glx);
 }
 
 /**
