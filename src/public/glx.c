@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/19 12:15:00 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/19 20:56:51 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static t_glx_prv	*_glx_init_private(size_t update_lim)
 	t_glx_prv	*prv;
 
 	prv = ft_calloc(1, sizeof(t_glx_prv));
+	if (!prv)
+		return (NULL);
 	prv->update_count = 0;
 	prv->update_lim = update_lim;
 	prv->error = _glx_error;
@@ -36,9 +38,11 @@ t_glx	*glx_init(char *title, int win_w, int win_h, size_t update_lim)
 {
 	t_glx	*glx;
 
-	glx = ft_calloc(1, sizeof(t_glx));
+	glx = ft_calloc(1, sizeof(t_glx));	
 	glx->user = ft_calloc(1, sizeof(t_glx_user));
 	glx->_ = _glx_init_private(update_lim);
+	if (!glx || !glx->user || glx->_)
+		_glx_error("glx_init: memory allocation failed.");
 	glx->frame_count = 0;
 	glx->mlx = mlx_init();
 	glx->win = mlx_new_window(glx->mlx, win_w, win_h, title);
