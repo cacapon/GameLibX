@@ -29,7 +29,7 @@ static char *_player_pos_str(t_pos p_pos)
 	return (tmp);
 }
 
-static void data_free(t_test_data *data)
+int clean(void *data)
 {
 	free(data);
 }
@@ -66,10 +66,7 @@ int	update(void *param)
 	glx = get_glx();
 	data = (t_test_data *)param;
 	if (glx->btnp(XK_q))
-	{
-		data_free(data);
 		glx->quit(EXIT_SUCCESS);
-	}
 	if (glx->btnp(XK_a))
 		data->player_pos.x--;
 	if (glx->btnp(XK_w))
@@ -90,6 +87,6 @@ int	main(void)
 	test = ft_calloc(1, sizeof(t_test_data));
 	*test = (t_test_data){.player_pos = (t_pos){0,0}};
 	glx->load_img("./plane.xpm", 16, 16);
-	glx->hook(update, draw);
+	glx->hook(update, draw, clean);
 	glx->run(test);
 }

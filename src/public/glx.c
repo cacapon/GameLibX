@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/19 11:49:41 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/19 11:54:55 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	glx_quit(int sts_code)
 	}
 	mlx_destroy_window(glx->mlx, glx->win);
 	mlx_destroy_display(glx->mlx);
+	glx->user->clean(glx->user->param);
 	free(glx->mlx);
 	free(glx->_);
 	free(glx->user);
@@ -105,13 +106,14 @@ static int	_loop_function(void)
  * @param update	: 更新用の関数ポインタ
  * @param draw		: 描画用の関数ポインタ
  */
- void	glx_hook(int (*update)(void *), int (*draw)(void *))
+ void	glx_hook(int (*update)(void *), int (*draw)(void *), int (*clean)(void *))
 {
 	t_glx	*glx;
 
 	glx = get_glx();
 	glx->user->update = update;
 	glx->user->draw = draw;
+	glx->user->clean = clean;
 	mlx_loop_hook(glx->mlx, _loop_function, NULL);
 	mlx_hook(glx->win, 2, (1L << 0), _glx_key_pressed, glx);
 	mlx_hook(glx->win, 3, (1L << 1), _glx_key_released, glx);
