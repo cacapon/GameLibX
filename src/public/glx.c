@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/19 11:20:00 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/19 11:42:38 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_glx	*glx_init(char *title, int win_w, int win_h, size_t update_lim)
 	glx->win = mlx_new_window(glx->mlx, win_w, win_h, title);
 	glx->imgc = 0;
 	glx->run = glx_run;
+	glx->hook = glx_hook;
 	glx->load_img = glx_load_img;
 	glx->put_img = glx_put_img;
 	glx->text = glx_text;
@@ -98,6 +99,16 @@ static int	_loop_function(void *param)
 	return (0);
 }
 
+void	glx_hook(void *param)
+{
+	t_glx	*glx;
+
+	glx = get_glx();
+	mlx_loop_hook(glx->mlx, _loop_function, param);
+	mlx_hook(glx->win, 2, (1L << 0), _glx_key_pressed, glx);
+	mlx_hook(glx->win, 3, (1L << 1), _glx_key_released, glx);
+}
+
 /**
  * @brief glxを実行します。キー入力を受け付けながら、frame毎にupdate,drawを実行します。
  *
@@ -105,7 +116,7 @@ static int	_loop_function(void *param)
  * @param draw		: 描画用の関数ポインタ
  * @param param		: 更新・描画用のパラメータ
  */
-void	glx_run(int (*update)(void *), int (*draw)(void *), void *param)
+void	glx_run(int (*update)(void *), int (*draw)(void *))
 {
 	t_glx	*glx;
 
@@ -113,8 +124,5 @@ void	glx_run(int (*update)(void *), int (*draw)(void *), void *param)
 	mlx_do_key_autorepeatoff(glx->mlx);
 	glx->user->update = update;
 	glx->user->draw = draw;
-	mlx_loop_hook(glx->mlx, _loop_function, param);
-	mlx_hook(glx->win, 2, (1L << 0), _glx_key_pressed, glx);
-	mlx_hook(glx->win, 3, (1L << 1), _glx_key_released, glx);
 	mlx_loop(glx->mlx);
 }
