@@ -6,7 +6,7 @@
 #    By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 12:57:47 by ttsubo            #+#    #+#              #
-#    Updated: 2025/03/19 12:14:25 by ttsubo           ###   ########.fr        #
+#    Updated: 2025/03/19 20:57:17 by ttsubo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,6 @@ SRCS = $(addprefix $(GLX_PRI_DIR), $(PRI_SRC)) \
 
 OBJS = $(addprefix $(BLD_DIR), $(PRI_SRC:.c=.o)) \
 	   $(addprefix $(BLD_DIR), $(PUB_SRC:.c=.o))
-
-$(info $(SRCS))
-$(info $(OBJS))
 
 ifeq ($(MAKECMDGOALS), debug)
 CC := cc -g
