@@ -6,7 +6,7 @@
 #    By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 12:57:47 by ttsubo            #+#    #+#              #
-#    Updated: 2025/03/19 20:57:17 by ttsubo           ###   ########.fr        #
+#    Updated: 2025/03/21 01:10:01 by ttsubo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LFT_DIR = lib/libft/
 MLX_DIR = lib/mlx/
 
 PRI_SRC = glx_key_input_prv.c glx_prv.c
-PUB_SRC = glx.c glx_color.c glx_img.c \
+PUB_SRC = glx.c glx_init.c glx_color.c glx_img.c \
 		  glx_key_input.c glx_text.c glx_win.c \
 		  glx_instance.c glx_hook.c
 
