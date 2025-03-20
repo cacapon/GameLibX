@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:47:22 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/19 12:16:07 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/20 21:06:25 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 // custom includes
 # include "inc/glx_color.h"
 # include "inc/glx_define.h"
-# include "inc/glx_img.h"
-# include "inc/glx_private.h"
-# include "inc/glx_text.h"
-# include "inc/glx_struct.h"
-# include "inc/glx_win.h"
-# include "inc/glx_instance.h"
 # include "inc/glx_hook.h"
+# include "inc/glx_img.h"
+# include "inc/glx_instance.h"
+# include "inc/glx_private.h"
+# include "inc/glx_struct.h"
+# include "inc/glx_text.h"
+# include "inc/glx_win.h"
 
 // submodule
 # include "lib/libft/libft.h"
@@ -34,8 +34,8 @@
 // public methods.
 
 t_glx	*glx_init(char *title, int win_w, int win_h, size_t update_lim);
-t_glx   *get_glx(void);
-void	glx_run(void *);
+t_glx	*get_glx(void);
+void	glx_run(void *param);
 void	glx_quit(int sts_code);
 int		glx_btnp(int keycode);
 int		glx_btn(int keycode);
