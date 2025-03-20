@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:46:33 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 14:27:59 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/20 11:28:18 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,20 @@ static t_glx_prv	*_glx_init_private(size_t update_lim)
 	return (prv);
 }
 
+static bool	_glx_init_is_successed(t_glx *glx)
+{
+	if (!glx || !glx->user || !glx->_)
+	{
+		ft_printf("glx_init: memory_allocation failed.\n");
+		ft_printf("glx:%p\tglx->user:%p\tglx->_:%p\n", glx, glx->user, glx->_);
+		free(glx);
+		free(glx->user);
+		free(glx->_);
+		return (false);
+	}
+	return (true);
+}
+
 /**
  * @brief glxを初期化します。
  * 
@@ -37,7 +51,10 @@ t_glx	*glx_init(char *title, int win_w, int win_h, size_t update_lim)
 	t_glx	*glx;
 
 	glx = ft_calloc(1, sizeof(t_glx));
+	glx->user = ft_calloc(1, sizeof(t_glx_user));
 	glx->_ = _glx_init_private(update_lim);
+	if (!_glx_init_is_successed(glx))
+		exit(EXIT_FAILURE);
 	glx->frame_count = 0;
 	glx->mlx = mlx_init();
 	glx->win = mlx_new_window(glx->mlx, win_w, win_h, title);
