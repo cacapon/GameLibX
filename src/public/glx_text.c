@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glx_prv.c                                          :+:      :+:    :+:   */
+/*   glx_text.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 13:37:06 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/19 21:02:36 by ttsubo           ###   ########.fr       */
+/*   Created: 2025/03/17 11:48:46 by ttsubo            #+#    #+#             */
+/*   Updated: 2025/03/18 13:43:06 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "glx.h"
+#include "glx_text.h"
 
 /**
- * @brief 文字列mesを出力し、ゲームを終了します。
- * 
- * @param self 
- * @param mes 
+ * @brief 文字列textを位置posにcolorの色で出力します。
+ *
+ * @param str
+ * @param pos
+ * @param color
  */
-void	_glx_error(char *mes)
+void	glx_text(char *text, t_pos pos, t_glx_color_i color)
 {
 	t_glx	*glx;
+	void	*mlx;
+	void	*win;
 
 	glx = get_glx();
-	ft_putstr_fd("Error\n", STDERR_FILENO);
-	ft_putstr_fd(mes, STDERR_FILENO);
-	glx->quit(EXIT_FAILURE);
-}
-
-int	_glx_win_exit(t_glx *glx)
-{
-	glx->quit(EXIT_SUCCESS);
-	return (0);
+	mlx = glx->mlx;
+	win = glx->win;
+	mlx_string_put(mlx, win, pos.x, pos.y, glx_get_color(color), text);
 }

@@ -6,7 +6,7 @@
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 14:14:27 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/17 14:20:45 by ttsubo           ###   ########.fr       */
+/*   Updated: 2025/03/18 13:38:55 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "glx.h"
 
-void	glx_cls(t_glx *self);
+void	glx_cls(void);
 
 #endif

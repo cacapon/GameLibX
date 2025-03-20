@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glx_prv.c                                          :+:      :+:    :+:   */
+/*   glx_instance.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 13:37:06 by ttsubo            #+#    #+#             */
-/*   Updated: 2025/03/19 21:02:36 by ttsubo           ###   ########.fr       */
+/*   Created: 2025/03/17 11:49:22 by ttsubo            #+#    #+#             */
+/*   Updated: 2025/03/18 13:55:46 by ttsubo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "glx.h"
+#ifndef GLX_INSTANCE_H
+# define GLX_INSTANCE_H
 
-/**
- * @brief 文字列mesを出力し、ゲームを終了します。
- * 
- * @param self 
- * @param mes 
- */
-void	_glx_error(char *mes)
-{
-	t_glx	*glx;
+# include "glx_struct.h"
 
-	glx = get_glx();
-	ft_putstr_fd("Error\n", STDERR_FILENO);
-	ft_putstr_fd(mes, STDERR_FILENO);
-	glx->quit(EXIT_FAILURE);
-}
+t_glx	*get_glx(void);
+void	set_glx(t_glx *glx);
 
-int	_glx_win_exit(t_glx *glx)
-{
-	glx->quit(EXIT_SUCCESS);
-	return (0);
-}
+#endif

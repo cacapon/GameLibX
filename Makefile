@@ -6,7 +6,7 @@
 #    By: ttsubo <ttsubo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/09 12:57:47 by ttsubo            #+#    #+#              #
-#    Updated: 2025/03/17 14:22:36 by ttsubo           ###   ########.fr        #
+#    Updated: 2025/03/19 20:57:17 by ttsubo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	= libglx.a
 CC		= cc
 
 W_FLG	= -Wall -Wextra -Werror
-I_FLG	= -Iinc -Ilib/mlx -Ilib/libft
+I_FLG	= -I. -Iinc -Ilib/mlx -Ilib/libft
 L_FLG	= -Llib/mlx -lmlx -lX11 -lXext 
 
 GLX_PRI_DIR = src/private/
@@ -26,16 +26,15 @@ LFT_DIR = lib/libft/
 MLX_DIR = lib/mlx/
 
 PRI_SRC = glx_key_input_prv.c glx_prv.c
-PUB_SRC = glx.c glx_color.c glx_img.c glx_key_input.c glx_str.c glx_win.c
+PUB_SRC = glx.c glx_color.c glx_img.c \
+		  glx_key_input.c glx_text.c glx_win.c \
+		  glx_instance.c glx_hook.c
 
 SRCS = $(addprefix $(GLX_PRI_DIR), $(PRI_SRC)) \
 	   $(addprefix $(GLX_PUB_DIR), $(PUB_SRC))
 
 OBJS = $(addprefix $(BLD_DIR), $(PRI_SRC:.c=.o)) \
 	   $(addprefix $(BLD_DIR), $(PUB_SRC:.c=.o))
-
-$(info $(SRCS))
-$(info $(OBJS))
 
 ifeq ($(MAKECMDGOALS), debug)
 CC := cc -g
